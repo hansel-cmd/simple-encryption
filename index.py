@@ -6,7 +6,7 @@ class Encryption():
 
     # Alphabets
     alphabets = 'abcdefghijklmnopqrstuvwxyz'
-    vowels = "aeiou"
+    vowels = "aeiouAEIOU"
 
     def __init__(self):
         pass
@@ -29,41 +29,21 @@ class Encryption():
         rotated_word = []
         for char in word:
             if char.isalpha():
-                rotated_word.append(self.swap_char(char))
+                if char not in self.vowels:
+                    rotated_word.append(self.swap_char(char))
+                else:
+                    rotated_word.append(char.upper())
             else:
                 rotated_word.append(char)
 
         return rotated_word
     
     def swap_char(self, char):
-        index = alphabets.find(char)
-        return self.alphabets[(index + self.vowel_count) % len(alphabets)]
+        index = self.alphabets.find(char)
+        return self.alphabets[(index + self.vowel_count) % len(self.alphabets)]
         
 
 
 
 # me = Encryption()
 # me.encrypt("hello world, hahaAaaah! oh my god@ wtf are u doing bruh*!?")
-
-
-alphabets = "abcdefghijklmnopqrstuvwxyz"
-
-
-test = "hello world, hahaAaaah! oh my god@ wtf are u doing bruh*!?"
-test_list = test.split(' ')
-
-# rotate is 13
-rotate = 3
-index = alphabets.find('x')
-
-
-# for char in test_list[0]:
-#     print(char, end=' ')
-#     if char.isalpha():
-#         ndx = alphabets.find(char)
-
-
-# print(sum((*map(test_list[2].count, "aeiouAEIOU"), 0)))
-
-te = ["hello", "oh", "my", "god"]
-print(''.join(te))
