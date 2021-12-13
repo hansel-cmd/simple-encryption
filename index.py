@@ -6,7 +6,7 @@ class Encryption():
     def __init__(self): pass
 
     def encrypt(self, message):
-        word_list = message.split(' ')
+        word_list = message.lower().split(' ')
 
         encrypted_message = []
         for word in word_list:
