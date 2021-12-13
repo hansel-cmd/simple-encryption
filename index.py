@@ -8,7 +8,6 @@ class Encryption():
     alphabets = 'abcdefghijklmnopqrstuvwxyz'
     vowels = "aeiou"
 
-
     def __init__(self):
         pass
 
@@ -17,19 +16,16 @@ class Encryption():
 
         encrypted_message = []
         for word in word_list:
-            rotate_by_n = self.count_vowels(word)
-            encrypted_message.append(self.rotate(word, rotate_by_n))
+            self.vowel_count = self.count_vowels(word)
+            encrypted_message.append(self.rotate(word))
         
-        # return encrypted_message.join()
+        return ' '.join(encrypted_message)
 
     def count_vowels(self, word):
         count = sum((*map(word.count, "aeiouAEIOU"), 0))
         return count if count else 13
 
-            
-
-    
-    def rotate(self, word, rotate_by_n):
+    def rotate(self, word):
         rotated_word = []
         for char in word:
             if char.isalpha():
@@ -40,21 +36,26 @@ class Encryption():
         return rotated_word
     
     def swap_char(self, char):
-        pass
+        index = alphabets.find(char)
+        return self.alphabets[(index + self.vowel_count) % len(alphabets)]
+        
 
 
-    
-me = Encryption()
-me.encrypt("hello world, hahaAaaah! oh my god@ wtf are u doing bruh*!?")
+
+# me = Encryption()
+# me.encrypt("hello world, hahaAaaah! oh my god@ wtf are u doing bruh*!?")
 
 
 alphabets = "abcdefghijklmnopqrstuvwxyz"
 
 
 test = "hello world, hahaAaaah! oh my god@ wtf are u doing bruh*!?"
-
-
 test_list = test.split(' ')
+
+# rotate is 13
+rotate = 3
+index = alphabets.find('x')
+
 
 # for char in test_list[0]:
 #     print(char, end=' ')
@@ -63,3 +64,6 @@ test_list = test.split(' ')
 
 
 # print(sum((*map(test_list[2].count, "aeiouAEIOU"), 0)))
+
+te = ["hello", "oh", "my", "god"]
+print(''.join(te))
