@@ -1,15 +1,9 @@
-print("hello world")
-
-
-
 class Encryption():
 
-    # Alphabets
     alphabets = 'abcdefghijklmnopqrstuvwxyz'
     vowels = "aeiouAEIOU"
 
-    def __init__(self):
-        pass
+    def __init__(self): pass
 
     def encrypt(self, message):
         word_list = message.split(' ')
@@ -17,7 +11,7 @@ class Encryption():
         encrypted_message = []
         for word in word_list:
             self.vowel_count = self.count_vowels(word)
-            encrypted_message.append(self.rotate(word))
+            encrypted_message.append(''.join(self.rotate(word)))
         
         return ' '.join(encrypted_message)
 
@@ -43,7 +37,5 @@ class Encryption():
         return self.alphabets[(index + self.vowel_count) % len(self.alphabets)]
         
 
-
-
-# me = Encryption()
-# me.encrypt("hello world, hahaAaaah! oh my god@ wtf are u doing bruh*!?")
+me = Encryption()
+print(me.encrypt("Drink some water, reload your mags, and let's get back out there."))
